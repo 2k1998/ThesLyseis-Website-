@@ -2,23 +2,12 @@
 import { useEffect, useState } from "react";
 import { trackEvent } from "@/lib/events";
 
-const VIBER_NUMBER = "+306932642952";
-const VIBER_NUMBER_ENCODED = "%2B306932642952";
-const PREFILLED_MESSAGE = "Γεια σας! Θα ήθελα δωρεάν έλεγχο για ρεύμα/αέριο. Μπορείτε να με καλέσετε;";
-const VIBER_LINK = `viber://chat?number=${VIBER_NUMBER_ENCODED}`;
-const TEL_LINK = `tel:${VIBER_NUMBER}`;
+const VIBER_LINK = "viber://chat?number=%2B306932642952";
 
 export default function ViberButton() {
   const [tracked, setTracked] = useState(false);
-  const [copied, setCopied] = useState(false);
-  const [isViber, setIsViber] = useState(true);
 
   useEffect(() => {
-    // Detect if likely on a desktop (no Viber app) — show tel fallback
-    const ua = navigator.userAgent.toLowerCase();
-    const isMobile = /android|iphone|ipad|ipod/.test(ua);
-    setIsViber(isMobile);
-
     if (!tracked) {
       trackEvent("viber_view");
       setTracked(true);
@@ -26,23 +15,8 @@ export default function ViberButton() {
   }, [tracked]);
 
   function handleClick() {
-    if (isViber) {
-      trackEvent("viber_click");
-      window.location.href = VIBER_LINK;
-
-      // Fallback: if Viber doesn't open in 1.5s, copy message to clipboard
-      setTimeout(async () => {
-        try {
-          await navigator.clipboard.writeText(PREFILLED_MESSAGE);
-          trackEvent("viber_copy_message");
-          setCopied(true);
-          setTimeout(() => setCopied(false), 3000);
-        } catch {}
-      }, 1500);
-    } else {
-      trackEvent("viber_fallback_tel");
-      window.location.href = TEL_LINK;
-    }
+    trackEvent("viber_click");
+    window.location.href = VIBER_LINK;
   }
 
   return (
@@ -50,11 +24,6 @@ export default function ViberButton() {
       className="fixed bottom-20 right-4 z-50 md:bottom-6 md:right-6 flex flex-col items-end gap-2"
       style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
     >
-      {copied && (
-        <div className="bg-black text-white text-xs px-3 py-2 rounded-lg max-w-[200px] text-center shadow-lg">
-          Το μήνυμα αντιγράφηκε. Επικολλήστε το στο Viber!
-        </div>
-      )}
       <button
         onClick={handleClick}
         aria-label="Επικοινωνία μέσω Viber"
