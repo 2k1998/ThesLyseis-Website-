@@ -93,7 +93,7 @@ export default async function AboutPage() {
   return (
     <main className="w-full mt-16 md:mt-20">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-black py-16 md:py-24">
+      <section className="relative overflow-hidden bg-background py-16 md:py-24">
         <div
           className="pointer-events-none absolute inset-0 opacity-50"
           aria-hidden
@@ -107,10 +107,10 @@ export default async function AboutPage() {
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-primary-light">
               Ποιοι είμαστε
             </p>
-            <h1 className="mb-6 text-4xl font-bold tracking-tight text-white md:text-6xl">
+            <h1 className="mb-6 text-4xl font-bold tracking-tight text-foreground md:text-6xl">
               Ο προσωπικός σας σύμβουλος ενέργειας.
             </h1>
-            <p className="mx-auto max-w-2xl text-lg text-neutral-gray md:text-xl">
+            <p className="mx-auto max-w-2xl text-lg text-foreground-muted md:text-xl">
               Από το 2019 βοηθάμε ιδιώτες και επιχειρήσεις στη Θεσσαλονίκη να
               πληρώνουν λιγότερο για ρεύμα, φυσικό αέριο και τηλεπικοινωνίες.
             </p>
@@ -119,18 +119,18 @@ export default async function AboutPage() {
       </section>
 
       {/* Stats — TrustStrip style */}
-      <section className="bg-white py-16 dark:bg-black md:py-24">
+      <section className="bg-background py-16 md:py-24">
         <Container>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {aboutStats.map((stat, index) => (
               <div
                 key={index}
-                className="flex flex-col items-center justify-center rounded-xl border border-black/10 bg-black/5 p-8 text-center dark:border-white/10 dark:bg-white/5"
+                className="flex flex-col items-center justify-center rounded-xl border border-card-border bg-card p-8 text-center"
               >
                 <div className="mb-2 text-4xl font-bold text-primary dark:text-primary-soft md:text-5xl">
                   {stat.value}
                 </div>
-                <div className="text-sm font-medium text-neutral-gray md:text-base">
+                <div className="text-sm font-medium text-foreground-muted md:text-base">
                   {stat.label}
                 </div>
               </div>
@@ -140,15 +140,15 @@ export default async function AboutPage() {
       </section>
 
       {/* Story */}
-      <section className="bg-zinc-50 py-16 dark:bg-black/50 md:py-24">
+      <section className="bg-background-secondary py-16 md:py-24">
         <Container>
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-12">
             <div>
-              <h2 className="text-3xl font-bold leading-tight text-black dark:text-white md:text-4xl">
+              <h2 className="text-3xl font-bold leading-tight text-foreground md:text-4xl">
                 Ξεκινήσαμε με μία απλή ιδέα.
               </h2>
             </div>
-            <div className="space-y-5 text-neutral-gray leading-relaxed">
+            <div className="space-y-5 text-foreground-muted leading-relaxed">
               <p>
                 Ιδρύθηκε το 2019 στη Θεσσαλονίκη ως «Θες Ρεύμα», με στόχο να
                 απλοποιήσουμε την επιλογή παρόχου ηλεκτρικής ενέργειας για
@@ -169,24 +169,24 @@ export default async function AboutPage() {
       </section>
 
       {/* Value proposition */}
-      <section className="bg-[#0a0a0a] py-16 md:py-24">
+      <section className="bg-background-secondary py-16 md:py-24">
         <Container>
-          <h2 className="mb-12 text-center text-3xl font-bold text-white md:mb-16 md:text-4xl">
+          <h2 className="mb-12 text-center text-3xl font-bold text-foreground md:mb-16 md:text-4xl">
             Γιατί να μας εμπιστευτείτε;
           </h2>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-8">
             {valueCards.map((card) => (
               <article
                 key={card.title}
-                className="rounded-xl border border-white/10 border-t-2 border-t-primary-light bg-white/[0.03] p-8 transition-colors duration-300 hover:border-white/15"
+                className="rounded-xl border border-card-border border-t-2 border-t-primary-light bg-card p-8 transition-colors duration-300 hover:border-foreground/20"
               >
                 <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-primary/20 text-primary-light transition-colors duration-300">
                   {card.icon}
                 </div>
-                <h3 className="mb-3 text-xl font-bold text-white">
+                <h3 className="mb-3 text-xl font-bold text-foreground">
                   {card.title}
                 </h3>
-                <p className="leading-relaxed text-neutral-gray">
+                <p className="leading-relaxed text-foreground-muted">
                   {card.description}
                 </p>
               </article>
@@ -199,7 +199,7 @@ export default async function AboutPage() {
       <section className="bg-primary/5 py-16 dark:bg-primary/10 md:py-24">
         <Container>
           <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
-            <h2 className="mb-6 text-3xl font-bold leading-tight text-black dark:text-white md:text-5xl">
+            <h2 className="mb-6 text-3xl font-bold leading-tight text-foreground md:text-5xl">
               Θέλετε να μάθετε αν πληρώνετε παραπάνω;
             </h2>
             <Link

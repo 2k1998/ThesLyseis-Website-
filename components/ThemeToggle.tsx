@@ -35,7 +35,7 @@ export default function ThemeToggle() {
     <button
       onClick={toggleTheme}
       aria-label="Toggle Theme"
-      className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors duration-400"
+      className="p-2 rounded-full hover:bg-foreground/5 dark:hover:bg-foreground/10 transition-colors duration-400"
     >
       {isDark ? (
         // Moon icon placeholder (text for now as per minimal requirement, or SVG if preferred. PRD says "Button with icon")

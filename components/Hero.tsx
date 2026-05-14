@@ -71,21 +71,21 @@ export default function Hero() {
       
       <Container className="relative z-10">
         <div className="flex flex-col items-center text-center mx-auto max-w-[800px]">
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-black dark:text-white mb-6">
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground mb-6">
             Ο προσωπικός σας σύμβουλος ενέργειας.
           </h1>
           <div className="mb-10 max-w-2xl space-y-3">
-            <p className="text-lg md:text-xl font-bold text-black dark:text-white">
+            <p className="text-lg md:text-xl font-bold text-foreground">
               Δεν ήξερες; Δε ρώταγες. Η απάντηση είναι μία:{" "}
               <span className="font-bold text-[#5727A3]">Θες Λύσεις</span>.
             </p>
-            <p className="text-lg md:text-xl text-neutral-gray">
+            <p className="text-lg md:text-xl text-foreground-muted">
               Παρακολουθούμε την αγορά για εσάς και σας ενημερώνουμε ποιο πρόγραμμα και ποιος πάροχος συμφέρει με βάση την κατανάλωσή σας. Χωρίς κόστος, χωρίς δεσμεύσεις.
             </p>
           </div>
 
           {/* Mini Form (Wired) */}
-          <div id="mini-form" className="w-full max-w-3xl bg-white dark:bg-white/5 border border-black/5 dark:border-white/10 rounded-2xl p-4 md:p-6 shadow-[0_8px_30px_rgb(0,0,0,0.06)] dark:shadow-none min-h-[100px] flex items-center justify-center">
+          <div id="mini-form" className="w-full max-w-3xl bg-card border border-card-border rounded-2xl p-4 md:p-6 shadow-[0_8px_30px_rgb(0,0,0,0.06)] dark:shadow-none min-h-[100px] flex items-center justify-center">
             {status === "success" ? (
               <div className="text-primary font-medium flex flex-col items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
@@ -117,7 +117,7 @@ export default function Hero() {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       onFocus={handleFormFieldFocus}
-                      className="w-full bg-black/5 dark:bg-black/50 border border-transparent dark:border-white/5 rounded-xl px-4 py-3 md:py-4 text-black dark:text-white placeholder:text-neutral-gray focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all disabled:opacity-50"
+                      className="w-full bg-background-secondary border border-card-border rounded-xl px-4 py-3 md:py-4 text-foreground placeholder:text-foreground-muted focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all disabled:opacity-50"
                       aria-label="Όνομα"
                     />
                   </div>
@@ -130,7 +130,7 @@ export default function Hero() {
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       onFocus={handleFormFieldFocus}
-                      className="w-full bg-black/5 dark:bg-black/50 border border-transparent dark:border-white/5 rounded-xl px-4 py-3 md:py-4 text-black dark:text-white placeholder:text-neutral-gray focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all disabled:opacity-50"
+                      className="w-full bg-background-secondary border border-card-border rounded-xl px-4 py-3 md:py-4 text-foreground placeholder:text-foreground-muted focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all disabled:opacity-50"
                       aria-label="Τηλέφωνο"
                     />
                   </div>

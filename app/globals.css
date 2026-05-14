@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 255 255 255;
+    --background-secondary: 245 245 247;
+    --foreground: 0 0 0;
+    --foreground-muted: 100 100 100;
+    --card: 255 255 255;
+    --card-border: 220 220 220;
+    --nav-bg: 255 255 255 / 0.85;
+  }
+
+  .dark {
+    --background: 0 0 0;
+    --background-secondary: 10 10 10;
+    --foreground: 255 255 255;
+    --foreground-muted: 158 158 150;
+    --card: 18 18 18;
+    --card-border: 38 38 38;
+    --nav-bg: 0 0 0 / 0.85;
+  }
+}

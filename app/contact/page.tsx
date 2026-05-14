@@ -85,7 +85,7 @@ function IconClock() {
 export default function ContactPage() {
   return (
     <main className="w-full mt-16 md:mt-20">
-      <section className="relative overflow-hidden bg-black py-12 md:py-16">
+      <section className="relative overflow-hidden bg-background py-12 md:py-16">
         <div
           className="pointer-events-none absolute inset-0 opacity-40"
           aria-hidden
@@ -99,10 +99,10 @@ export default function ContactPage() {
             <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-primary-light">
               Επικοινωνία
             </p>
-            <h1 className="mb-4 text-3xl font-bold tracking-tight text-white md:text-5xl">
+            <h1 className="mb-4 text-3xl font-bold tracking-tight text-foreground md:text-5xl">
               Μιλήστε με έναν σύμβουλο σήμερα.
             </h1>
-            <p className="mx-auto max-w-2xl text-base text-neutral-gray md:text-lg">
+            <p className="mx-auto max-w-2xl text-base text-foreground-muted md:text-lg">
               Συμπληρώστε τη φόρμα ή επικοινωνήστε μαζί μας απευθείας. Η υπηρεσία
               μας είναι δωρεάν.
             </p>
@@ -110,7 +110,7 @@ export default function ContactPage() {
         </Container>
       </section>
 
-      <section className="bg-zinc-50 py-16 dark:bg-black/50 md:py-24">
+      <section className="bg-background-secondary py-16 md:py-24">
         <Container>
           <div className="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-12 lg:gap-14">
             <div className="md:col-span-7">
@@ -118,8 +118,8 @@ export default function ContactPage() {
             </div>
 
             <aside className="md:col-span-5">
-              <div className="sticky top-24 rounded-2xl border border-white/10 bg-[#0a0a0a] p-8 shadow-lg transition-shadow duration-300 md:top-28">
-                <h2 className="mb-8 text-xl font-bold text-white md:text-2xl">
+              <div className="sticky top-24 rounded-2xl border border-card-border bg-card p-8 shadow-lg transition-shadow duration-300 md:top-28">
+                <h2 className="mb-8 text-xl font-bold text-foreground md:text-2xl">
                   Στοιχεία Επικοινωνίας
                 </h2>
 
@@ -127,14 +127,14 @@ export default function ContactPage() {
                   <li>
                     <a
                       href="tel:+302311825327"
-                      className="flex gap-3 text-neutral-gray transition-colors duration-300 hover:text-white"
+                      className="flex gap-3 text-foreground-muted transition-colors duration-300 hover:text-foreground"
                     >
                       <IconPhone />
                       <span className="leading-snug">
-                        <span className="block text-xs font-medium uppercase tracking-wide text-neutral-gray/80">
+                        <span className="block text-xs font-medium uppercase tracking-wide text-foreground-muted/80">
                           Τηλέφωνο
                         </span>
-                        <span className="text-base font-semibold text-white">
+                        <span className="text-base font-semibold text-foreground">
                           2311825327
                         </span>
                       </span>
@@ -143,14 +143,14 @@ export default function ContactPage() {
                   <li>
                     <a
                       href="viber://chat?number=%2B306932642952"
-                      className="flex gap-3 text-neutral-gray transition-colors duration-300 hover:text-white"
+                      className="flex gap-3 text-foreground-muted transition-colors duration-300 hover:text-foreground"
                     >
                       <IconViber />
                       <span className="leading-snug">
-                        <span className="block text-xs font-medium uppercase tracking-wide text-neutral-gray/80">
+                        <span className="block text-xs font-medium uppercase tracking-wide text-foreground-muted/80">
                           Viber
                         </span>
-                        <span className="text-base font-semibold text-white">
+                        <span className="text-base font-semibold text-foreground">
                           +30 693 264 2952
                         </span>
                       </span>
@@ -159,14 +159,14 @@ export default function ContactPage() {
                   <li>
                     <a
                       href="mailto:info@theslyseis.gr"
-                      className="flex gap-3 text-neutral-gray transition-colors duration-300 hover:text-white"
+                      className="flex gap-3 text-foreground-muted transition-colors duration-300 hover:text-foreground"
                     >
                       <IconMail />
                       <span className="leading-snug">
-                        <span className="block text-xs font-medium uppercase tracking-wide text-neutral-gray/80">
+                        <span className="block text-xs font-medium uppercase tracking-wide text-foreground-muted/80">
                           Email
                         </span>
-                        <span className="text-base font-semibold text-white break-all">
+                        <span className="text-base font-semibold text-foreground break-all">
                           info@theslyseis.gr
                         </span>
                       </span>
@@ -174,7 +174,7 @@ export default function ContactPage() {
                   </li>
                 </ul>
 
-                <div className="mt-8 flex gap-3 border-t border-white/10 pt-8 text-sm text-neutral-gray">
+                <div className="mt-8 flex gap-3 border-t border-card-border pt-8 text-sm text-foreground-muted">
                   <IconClock />
                   <p className="leading-relaxed">
                     Δευτέρα – Παρασκευή, 9:00 – 17:00

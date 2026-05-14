@@ -19,7 +19,7 @@ const promises = [
 
 export default function PromiseSection() {
   return (
-    <section className="py-16 md:py-24 bg-zinc-50 dark:bg-black/50">
+    <section className="py-16 md:py-24 bg-background-secondary">
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
           {promises.map((promise, index) => (
@@ -44,10 +44,10 @@ export default function PromiseSection() {
                 </svg>
               </div>
 
-              <h3 className="text-xl font-bold text-black dark:text-white mb-3">
+              <h3 className="text-xl font-bold text-foreground mb-3">
                 {promise.title}
               </h3>
-              <p className="text-neutral-gray leading-relaxed">
+              <p className="text-foreground-muted leading-relaxed">
                 {promise.description}
               </p>
             </div>

@@ -63,17 +63,17 @@ export default function ScrollCTA() {
 
   return (
     <div
-      className={`fixed bottom-0 left-0 right-0 z-40 hidden md:block bg-white/95 dark:bg-black/95 backdrop-blur-md border-t border-black/10 dark:border-white/10 py-4 shadow-[0_-8px_30px_rgba(0,0,0,0.08)] dark:shadow-[0_-8px_30px_rgba(0,0,0,0.4)] transition-transform duration-300 ease-in-out ${
+      className={`fixed bottom-0 left-0 right-0 z-40 hidden md:block bg-background/95 backdrop-blur-md border-t border-card-border py-4 shadow-[0_-8px_30px_rgba(0,0,0,0.08)] dark:shadow-[0_-8px_30px_rgba(0,0,0,0.4)] transition-transform duration-300 ease-in-out ${
         isVisible ? "translate-y-0" : "translate-y-[150%]"
       }`}
     >
       <Container>
         <div className="flex items-center justify-between">
           <div>
-            <h3 className="text-lg font-bold text-black dark:text-white">
+            <h3 className="text-lg font-bold text-foreground">
               Μειώστε τους λογαριασμούς σας
             </h3>
-            <p className="text-sm text-neutral-gray">
+            <p className="text-sm text-foreground-muted">
               Χωρίς κόστος. Χωρίς δέσμευση.
             </p>
           </div>

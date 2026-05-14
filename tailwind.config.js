@@ -17,6 +17,15 @@ module.exports = {
         neutral: {
           gray: "#9E9E96",
         },
+        background: "rgb(var(--background) / <alpha-value>)",
+        "background-secondary":
+          "rgb(var(--background-secondary) / <alpha-value>)",
+        foreground: "rgb(var(--foreground) / <alpha-value>)",
+        "foreground-muted":
+          "rgb(var(--foreground-muted) / <alpha-value>)",
+        card: "rgb(var(--card) / <alpha-value>)",
+        "card-border": "rgb(var(--card-border) / <alpha-value>)",
+        "nav-bg": "rgb(var(--nav-bg))",
       },
       transitionDuration: {
         400: "400ms",

@@ -90,7 +90,7 @@ export default function ContactForm({ embedded = false }: ContactFormProps) {
   };
 
   const formCard = (
-    <div className="bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-2xl p-6 md:p-10 shadow-sm">
+    <div className="bg-card border border-card-border rounded-2xl p-6 md:p-10 shadow-sm">
       {status === "success" ? (
         <div className="text-center py-10">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-6">
@@ -98,8 +98,8 @@ export default function ContactForm({ embedded = false }: ContactFormProps) {
               <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h3 className="text-2xl font-bold text-black dark:text-white mb-2">Το μήνυμά σας εστάλη!</h3>
-          <p className="text-neutral-gray">
+          <h3 className="text-2xl font-bold text-foreground mb-2">Το μήνυμά σας εστάλη!</h3>
+          <p className="text-foreground-muted">
             Ευχαριστούμε για την επικοινωνία. Ένας σύμβουλός μας θα μελετήσει τα στοιχεία σας και θα επικοινωνήσει άμεσα μαζί σας.
           </p>
           <button
@@ -125,7 +125,7 @@ export default function ContactForm({ embedded = false }: ContactFormProps) {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-black dark:text-white mb-2">Ονοματεπώνυμο *</label>
+                    <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">Ονοματεπώνυμο *</label>
                     <input
                       id="name"
                       type="text"
@@ -135,11 +135,11 @@ export default function ContactForm({ embedded = false }: ContactFormProps) {
                       value={formData.name}
                       onChange={handleChange}
                       onFocus={handleFormFieldFocus}
-                      className="w-full bg-white dark:bg-black/50 border border-black/10 dark:border-white/10 rounded-xl px-4 py-3 text-black dark:text-white placeholder:text-neutral-gray focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all disabled:opacity-50"
+                      className="w-full bg-card border border-card-border rounded-xl px-4 py-3 text-foreground placeholder:text-foreground-muted focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all disabled:opacity-50"
                     />
                   </div>
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-black dark:text-white mb-2">Τηλέφωνο Επικοινωνίας *</label>
+                    <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">Τηλέφωνο Επικοινωνίας *</label>
                     <input
                       id="phone"
                       type="tel"
@@ -149,14 +149,14 @@ export default function ContactForm({ embedded = false }: ContactFormProps) {
                       value={formData.phone}
                       onChange={handleChange}
                       onFocus={handleFormFieldFocus}
-                      className="w-full bg-white dark:bg-black/50 border border-black/10 dark:border-white/10 rounded-xl px-4 py-3 text-black dark:text-white placeholder:text-neutral-gray focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all disabled:opacity-50"
+                      className="w-full bg-card border border-card-border rounded-xl px-4 py-3 text-foreground placeholder:text-foreground-muted focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all disabled:opacity-50"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-black dark:text-white mb-2">Email *</label>
+                    <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">Email *</label>
                     <input
                       id="email"
                       type="email"
@@ -166,11 +166,11 @@ export default function ContactForm({ embedded = false }: ContactFormProps) {
                       value={formData.email}
                       onChange={handleChange}
                       onFocus={handleFormFieldFocus}
-                      className="w-full bg-white dark:bg-black/50 border border-black/10 dark:border-white/10 rounded-xl px-4 py-3 text-black dark:text-white placeholder:text-neutral-gray focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all disabled:opacity-50"
+                      className="w-full bg-card border border-card-border rounded-xl px-4 py-3 text-foreground placeholder:text-foreground-muted focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all disabled:opacity-50"
                     />
                   </div>
                   <div>
-                    <label htmlFor="type" className="block text-sm font-medium text-black dark:text-white mb-2">Τύπος *</label>
+                    <label htmlFor="type" className="block text-sm font-medium text-foreground mb-2">Τύπος *</label>
                     <select
                       id="type"
                       name="type"
@@ -179,7 +179,7 @@ export default function ContactForm({ embedded = false }: ContactFormProps) {
                       value={formData.type}
                       onChange={handleChange}
                       onFocus={handleFormFieldFocus}
-                      className="w-full bg-white dark:bg-black/50 border border-black/10 dark:border-white/10 rounded-xl px-4 py-3 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all disabled:opacity-50"
+                      className="w-full bg-card border border-card-border rounded-xl px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all disabled:opacity-50"
                     >
                       <option value="" disabled>Επιλέξτε...</option>
                       <option value="Ιδιώτης">Ιδιώτης</option>
@@ -190,7 +190,7 @@ export default function ContactForm({ embedded = false }: ContactFormProps) {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="provider" className="block text-sm font-medium text-black dark:text-white mb-2">Τωρινός Πάροχος (Προαιρετικό)</label>
+                    <label htmlFor="provider" className="block text-sm font-medium text-foreground mb-2">Τωρινός Πάροχος (Προαιρετικό)</label>
                     <input
                       id="provider"
                       type="text"
@@ -199,11 +199,11 @@ export default function ContactForm({ embedded = false }: ContactFormProps) {
                       value={formData.provider}
                       onChange={handleChange}
                       onFocus={handleFormFieldFocus}
-                      className="w-full bg-white dark:bg-black/50 border border-black/10 dark:border-white/10 rounded-xl px-4 py-3 text-black dark:text-white placeholder:text-neutral-gray focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all disabled:opacity-50"
+                      className="w-full bg-card border border-card-border rounded-xl px-4 py-3 text-foreground placeholder:text-foreground-muted focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all disabled:opacity-50"
                     />
                   </div>
                   <div>
-                    <label htmlFor="monthly_bill" className="block text-sm font-medium text-black dark:text-white mb-2">Μέσο Μηνιαίο Κόστος (Προαιρετικό)</label>
+                    <label htmlFor="monthly_bill" className="block text-sm font-medium text-foreground mb-2">Μέσο Μηνιαίο Κόστος (Προαιρετικό)</label>
                     <input
                       id="monthly_bill"
                       type="text"
@@ -212,13 +212,13 @@ export default function ContactForm({ embedded = false }: ContactFormProps) {
                       value={formData.monthly_bill}
                       onChange={handleChange}
                       onFocus={handleFormFieldFocus}
-                      className="w-full bg-white dark:bg-black/50 border border-black/10 dark:border-white/10 rounded-xl px-4 py-3 text-black dark:text-white placeholder:text-neutral-gray focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all disabled:opacity-50"
+                      className="w-full bg-card border border-card-border rounded-xl px-4 py-3 text-foreground placeholder:text-foreground-muted focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all disabled:opacity-50"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-black dark:text-white mb-2">Μήνυμα (Προαιρετικό)</label>
+                  <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">Μήνυμα (Προαιρετικό)</label>
                   <textarea
                     id="message"
                     name="message"
@@ -227,7 +227,7 @@ export default function ContactForm({ embedded = false }: ContactFormProps) {
                     value={formData.message}
                     onChange={handleChange}
                     onFocus={handleFormFieldFocus}
-                    className="w-full bg-white dark:bg-black/50 border border-black/10 dark:border-white/10 rounded-xl px-4 py-3 text-black dark:text-white placeholder:text-neutral-gray focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all disabled:opacity-50 resize-y"
+                    className="w-full bg-card border border-card-border rounded-xl px-4 py-3 text-foreground placeholder:text-foreground-muted focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all disabled:opacity-50 resize-y"
                   ></textarea>
                 </div>
 
@@ -263,14 +263,14 @@ export default function ContactForm({ embedded = false }: ContactFormProps) {
   }
 
   return (
-    <section className="py-16 md:py-24 bg-white dark:bg-black w-full">
+    <section className="py-16 md:py-24 bg-background w-full">
       <Container>
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-3xl md:text-5xl font-bold text-black dark:text-white mb-4">
+            <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
               Επικοινωνήστε μαζί μας
             </h1>
-            <p className="text-lg text-neutral-gray">
+            <p className="text-lg text-foreground-muted">
               Συμπληρώστε τα στοιχεία σας παρακάτω για μια ολοκληρωμένη πρόταση εξοικονόμησης.
             </p>
           </div>

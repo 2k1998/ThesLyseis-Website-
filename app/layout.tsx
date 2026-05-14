@@ -45,7 +45,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.className} antialiased bg-white dark:bg-black text-black dark:text-white transition-colors duration-400`}
+        className={`${inter.className} antialiased bg-background text-foreground transition-colors duration-400`}
       >
         <AnalyticsInit />
         <AttributionInitializer />

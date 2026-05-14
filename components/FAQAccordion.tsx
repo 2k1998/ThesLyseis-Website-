@@ -33,11 +33,11 @@ export default function FAQAccordion() {
   };
 
   return (
-    <section className="py-16 md:py-24 bg-white dark:bg-black">
+    <section className="py-16 md:py-24 bg-background">
       <Container>
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-bold text-black dark:text-white mb-4">
+            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
               Συχνές Ερωτήσεις
             </h2>
           </div>
@@ -48,7 +48,7 @@ export default function FAQAccordion() {
               return (
                 <div
                   key={faq.id}
-                  className="border border-black/10 dark:border-white/10 rounded-xl overflow-hidden bg-black/5 dark:bg-white/5"
+                  className="border border-card-border rounded-xl overflow-hidden bg-card"
                 >
                   <button
                     type="button"
@@ -57,7 +57,7 @@ export default function FAQAccordion() {
                     aria-expanded={isOpen}
                     aria-controls={`content-${faq.id}`}
                   >
-                    <span className="font-semibold text-black dark:text-white text-lg">
+                    <span className="font-semibold text-foreground text-lg">
                       {faq.question}
                     </span>
                     <span
@@ -93,7 +93,7 @@ export default function FAQAccordion() {
                       isOpen ? "max-h-[800px] opacity-100" : "max-h-0 opacity-0",
                     )}
                   >
-                    <div className="px-6 pb-5 text-neutral-gray">
+                    <div className="px-6 pb-5 text-foreground-muted">
                       {faq.answer}
                     </div>
                   </div>

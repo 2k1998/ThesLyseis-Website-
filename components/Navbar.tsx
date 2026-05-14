@@ -13,6 +13,14 @@ export default function Navbar() {
             alt="Θες Λύσεις"
             width={48}
             height={48}
+            className="hidden dark:block"
+          />
+          <Image
+            src="/logo-light.png"
+            alt="Θες Λύσεις"
+            width={48}
+            height={48}
+            className="block dark:hidden"
           />
         </Link>
 

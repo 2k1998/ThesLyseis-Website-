@@ -117,7 +117,7 @@ export default async function ServicesPage() {
   return (
     <main className="w-full mt-16 md:mt-20">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-black py-16 md:py-24">
+      <section className="relative overflow-hidden bg-background py-16 md:py-24">
         <div
           className="pointer-events-none absolute inset-0 opacity-50"
           aria-hidden
@@ -131,10 +131,10 @@ export default async function ServicesPage() {
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-primary-light">
               Τι κάνουμε
             </p>
-            <h1 className="mb-6 text-4xl font-bold tracking-tight text-white md:text-6xl">
+            <h1 className="mb-6 text-4xl font-bold tracking-tight text-foreground md:text-6xl">
               Τρεις αγορές. Μία λύση.
             </h1>
-            <p className="mx-auto max-w-2xl text-lg text-neutral-gray md:text-xl">
+            <p className="mx-auto max-w-2xl text-lg text-foreground-muted md:text-xl">
               Συγκρίνουμε τους παρόχους για εσάς και σας λέμε ποιος συμφέρει —
               χωρίς κόστος, χωρίς δεσμεύσεις.
             </p>
@@ -148,8 +148,8 @@ export default async function ServicesPage() {
           key={service.headline}
           className={
             index % 2 === 0
-              ? "bg-white py-16 dark:bg-black md:py-24"
-              : "bg-zinc-50 py-16 dark:bg-black/50 md:py-24"
+              ? "bg-background py-16 md:py-24"
+              : "bg-background-secondary py-16 md:py-24"
           }
         >
           <Container>
@@ -164,12 +164,12 @@ export default async function ServicesPage() {
                 </div>
               </div>
               <div className={service.iconOnRight ? "md:order-1" : ""}>
-                <h2 className="mb-6 text-3xl font-bold text-black dark:text-white md:text-4xl">
+                <h2 className="mb-6 text-3xl font-bold text-foreground md:text-4xl">
                   {service.headline}
                 </h2>
                 <ul className="mb-8 space-y-4">
                   {service.points.map((point) => (
-                    <li key={point} className="flex gap-3 text-neutral-gray">
+                    <li key={point} className="flex gap-3 text-foreground-muted">
                       <span
                         className="mt-1.5 inline-block h-2 w-2 shrink-0 rounded-full bg-primary-light"
                         aria-hidden
@@ -197,10 +197,10 @@ export default async function ServicesPage() {
       ))}
 
       {/* How it works — condensed */}
-      <section className="bg-white py-12 dark:bg-black md:py-16">
+      <section className="bg-background py-12 md:py-16">
         <Container>
           <div className="relative">
-            <div className="absolute left-[12%] right-[12%] top-[36px] -z-10 hidden h-[2px] bg-neutral-gray/20 dark:bg-neutral-gray/10 md:block" />
+            <div className="absolute left-[12%] right-[12%] top-[36px] -z-10 hidden h-[2px] bg-foreground-muted/20 md:block" />
 
             <div className="flex flex-col gap-10 md:flex-row md:justify-between md:gap-4">
               {howSteps.map((step) => (
@@ -208,10 +208,10 @@ export default async function ServicesPage() {
                   key={step.number}
                   className="flex flex-1 flex-col items-center text-center"
                 >
-                  <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-full border-4 border-primary bg-white text-xl font-bold text-primary shadow-sm dark:bg-black md:h-[5.5rem] md:w-[5.5rem] md:text-2xl">
+                  <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-full border-4 border-primary bg-background text-xl font-bold text-primary shadow-sm md:h-[5.5rem] md:w-[5.5rem] md:text-2xl">
                     {step.number}
                   </div>
-                  <h3 className="max-w-[220px] text-base font-semibold text-black dark:text-white md:text-lg">
+                  <h3 className="max-w-[220px] text-base font-semibold text-foreground md:text-lg">
                     {step.title}
                   </h3>
                 </div>
@@ -225,7 +225,7 @@ export default async function ServicesPage() {
       <section className="bg-primary/5 py-16 dark:bg-primary/10 md:py-24">
         <Container>
           <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
-            <h2 className="mb-10 text-3xl font-bold leading-tight text-black dark:text-white md:text-5xl">
+            <h2 className="mb-10 text-3xl font-bold leading-tight text-foreground md:text-5xl">
               Έτοιμοι να εξοικονομήσετε;
             </h2>
             <Link
