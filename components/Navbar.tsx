@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import Container from "./Container";
 import ThemeToggle from "./ThemeToggle";
@@ -6,12 +7,13 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 w-full z-50 bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-neutral-gray/20">
       <Container className="flex items-center justify-between h-16 md:h-20">
-        {/* Logo Placeholder */}
-        <Link
-          href="/"
-          className="text-xl font-bold text-primary dark:text-white"
-        >
-          Θες Λύσεις
+        <Link href="/" className="flex shrink-0 items-center">
+          <Image
+            src="/logo.png"
+            alt="Θες Λύσεις"
+            width={48}
+            height={48}
+          />
         </Link>
 
         {/* Desktop Navigation Placeholder */}
