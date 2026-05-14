@@ -5,7 +5,12 @@ import { getAttribution } from "@/lib/attribution";
 import { trackEvent } from "@/lib/events";
 import Container from "./Container";
 
-export default function ContactForm() {
+type ContactFormProps = {
+  /** When true, renders only the form card for use inside a parent layout (no section/Container/heading). */
+  embedded?: boolean;
+};
+
+export default function ContactForm({ embedded = false }: ContactFormProps) {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -20,6 +25,12 @@ export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const formStartTrackedRef = useRef(false);
+
+  const handleFormFieldFocus = () => {
+    if (formStartTrackedRef.current) return;
+    trackEvent("form_start", { lead_channel: "full_form" });
+    formStartTrackedRef.current = true;
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -78,40 +89,28 @@ export default function ContactForm() {
     }
   };
 
-  return (
-    <section className="py-16 md:py-24 bg-white dark:bg-black w-full">
-      <Container>
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-12">
-            <h1 className="text-3xl md:text-5xl font-bold text-black dark:text-white mb-4">
-              Επικοινωνήστε μαζί μας
-            </h1>
-            <p className="text-lg text-neutral-gray">
-              Συμπληρώστε τα στοιχεία σας παρακάτω για μια ολοκληρωμένη πρόταση εξοικονόμησης.
-            </p>
+  const formCard = (
+    <div className="bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-2xl p-6 md:p-10 shadow-sm">
+      {status === "success" ? (
+        <div className="text-center py-10">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
           </div>
-
-          <div className="bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-2xl p-6 md:p-10 shadow-sm">
-            {status === "success" ? (
-              <div className="text-center py-10">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-6">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <h3 className="text-2xl font-bold text-black dark:text-white mb-2">Το μήνυμά σας εστάλη!</h3>
-                <p className="text-neutral-gray">
-                  Ευχαριστούμε για την επικοινωνία. Ένας σύμβουλός μας θα μελετήσει τα στοιχεία σας και θα επικοινωνήσει άμεσα μαζί σας.
-                </p>
-                <button
-                  onClick={() => setStatus("idle")}
-                  className="mt-8 text-primary hover:text-primary-light font-medium transition-colors"
-                >
-                  Νέα καταχώρηση
-                </button>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
+          <h3 className="text-2xl font-bold text-black dark:text-white mb-2">Το μήνυμά σας εστάλη!</h3>
+          <p className="text-neutral-gray">
+            Ευχαριστούμε για την επικοινωνία. Ένας σύμβουλός μας θα μελετήσει τα στοιχεία σας και θα επικοινωνήσει άμεσα μαζί σας.
+          </p>
+          <button
+            onClick={() => setStatus("idle")}
+            className="mt-8 text-primary hover:text-primary-light font-medium transition-colors"
+          >
+            Νέα καταχώρηση
+          </button>
+        </div>
+      ) : (
+        <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Honeypot field */}
                 <input
                   type="text"
@@ -135,11 +134,7 @@ export default function ContactForm() {
                       disabled={status === "loading"}
                       value={formData.name}
                       onChange={handleChange}
-                      onFocus={() => {
-                        if (formStartTrackedRef.current) return;
-                        formStartTrackedRef.current = true;
-                        trackEvent("form_start");
-                      }}
+                      onFocus={handleFormFieldFocus}
                       className="w-full bg-white dark:bg-black/50 border border-black/10 dark:border-white/10 rounded-xl px-4 py-3 text-black dark:text-white placeholder:text-neutral-gray focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all disabled:opacity-50"
                     />
                   </div>
@@ -153,6 +148,7 @@ export default function ContactForm() {
                       disabled={status === "loading"}
                       value={formData.phone}
                       onChange={handleChange}
+                      onFocus={handleFormFieldFocus}
                       className="w-full bg-white dark:bg-black/50 border border-black/10 dark:border-white/10 rounded-xl px-4 py-3 text-black dark:text-white placeholder:text-neutral-gray focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all disabled:opacity-50"
                     />
                   </div>
@@ -169,6 +165,7 @@ export default function ContactForm() {
                       disabled={status === "loading"}
                       value={formData.email}
                       onChange={handleChange}
+                      onFocus={handleFormFieldFocus}
                       className="w-full bg-white dark:bg-black/50 border border-black/10 dark:border-white/10 rounded-xl px-4 py-3 text-black dark:text-white placeholder:text-neutral-gray focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all disabled:opacity-50"
                     />
                   </div>
@@ -181,6 +178,7 @@ export default function ContactForm() {
                       disabled={status === "loading"}
                       value={formData.type}
                       onChange={handleChange}
+                      onFocus={handleFormFieldFocus}
                       className="w-full bg-white dark:bg-black/50 border border-black/10 dark:border-white/10 rounded-xl px-4 py-3 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all disabled:opacity-50"
                     >
                       <option value="" disabled>Επιλέξτε...</option>
@@ -200,6 +198,7 @@ export default function ContactForm() {
                       disabled={status === "loading"}
                       value={formData.provider}
                       onChange={handleChange}
+                      onFocus={handleFormFieldFocus}
                       className="w-full bg-white dark:bg-black/50 border border-black/10 dark:border-white/10 rounded-xl px-4 py-3 text-black dark:text-white placeholder:text-neutral-gray focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all disabled:opacity-50"
                     />
                   </div>
@@ -212,6 +211,7 @@ export default function ContactForm() {
                       disabled={status === "loading"}
                       value={formData.monthly_bill}
                       onChange={handleChange}
+                      onFocus={handleFormFieldFocus}
                       className="w-full bg-white dark:bg-black/50 border border-black/10 dark:border-white/10 rounded-xl px-4 py-3 text-black dark:text-white placeholder:text-neutral-gray focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all disabled:opacity-50"
                     />
                   </div>
@@ -226,6 +226,7 @@ export default function ContactForm() {
                     disabled={status === "loading"}
                     value={formData.message}
                     onChange={handleChange}
+                    onFocus={handleFormFieldFocus}
                     className="w-full bg-white dark:bg-black/50 border border-black/10 dark:border-white/10 rounded-xl px-4 py-3 text-black dark:text-white placeholder:text-neutral-gray focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all disabled:opacity-50 resize-y"
                   ></textarea>
                 </div>
@@ -255,6 +256,26 @@ export default function ContactForm() {
               </form>
             )}
           </div>
+  );
+
+  if (embedded) {
+    return <div className="w-full">{formCard}</div>;
+  }
+
+  return (
+    <section className="py-16 md:py-24 bg-white dark:bg-black w-full">
+      <Container>
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-12">
+            <h1 className="text-3xl md:text-5xl font-bold text-black dark:text-white mb-4">
+              Επικοινωνήστε μαζί μας
+            </h1>
+            <p className="text-lg text-neutral-gray">
+              Συμπληρώστε τα στοιχεία σας παρακάτω για μια ολοκληρωμένη πρόταση εξοικονόμησης.
+            </p>
+          </div>
+
+          {formCard}
         </div>
       </Container>
     </section>

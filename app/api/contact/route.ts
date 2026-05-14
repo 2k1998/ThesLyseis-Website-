@@ -328,34 +328,21 @@ export async function POST(req: Request) {
       }).catch(() => {});
     }
 
-    try {
-      const forwardedForHeader = req.headers.get("x-forwarded-for");
-      const capiClientIp =
-        (forwardedForHeader ? forwardedForHeader.split(",")[0].trim() : "") ||
-        req.headers.get("x-real-ip")?.trim() ||
-        "";
-      const rawFirstUtm = attr?.first_touch?.utm_source;
-      const attributionSourceForCapi =
-        typeof rawFirstUtm === "string" && rawFirstUtm.trim() !== ""
-          ? rawFirstUtm.trim().slice(0, 200)
-          : undefined;
-
-      await sendMetaLeadEvent({
-        phone: phone.trim(),
-        email:
-          typeof email === "string" && email.trim() !== "" ? email.trim() : undefined,
-        clientIp: capiClientIp,
-        clientUserAgent: req.headers.get("user-agent") ?? "",
-        eventSourceUrl:
-          req.headers.get("referer")?.trim() ||
-          req.headers.get("origin")?.trim() ||
-          "",
-        formType: sheetLeadChannel === "mini_form" ? "mini" : "full",
-        attributionSource: attributionSourceForCapi,
-      });
-    } catch {
-      console.error("Meta CAPI lead event failed (non-blocking).");
-    }
+    void (async () => {
+      try {
+        await sendMetaLeadEvent({
+          phone: phone.trim(),
+          email:
+            typeof email === "string" && email.trim() !== ""
+              ? email.trim()
+              : undefined,
+          name: name.trim(),
+          sourceUrl: req.headers.get("referer") ?? undefined,
+        });
+      } catch {
+        /* never block response */
+      }
+    })();
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {

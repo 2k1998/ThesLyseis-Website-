@@ -6,9 +6,9 @@ import { initScrollTracking, trackEvent } from "@/lib/events";
 
 export default function AnalyticsInit() {
   useEffect(() => {
+    initAnalytics();
     initAttribution();
     trackEvent("page_view");
-    initAnalytics();
     const cleanup = initScrollTracking();
     return cleanup;
   }, []);

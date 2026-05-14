@@ -20,48 +20,21 @@ export type EventName =
 export type EventPayload = Record<string, string | number | boolean>;
 
 function dispatch(name: EventName, payload?: EventPayload): void {
-  // Phase 5: gtag("event", name, payload);
-  // Phase 5: fbq("track", name, payload);
   if (process.env.NODE_ENV === "development") {
     console.log(`[event] ${name}`, payload ?? {});
   }
 
-  const base = payload ?? {};
+  sendGA4Event(name, payload);
 
-  switch (name) {
-    case "page_view":
-      sendGA4Event("page_view", base);
-      sendPixelEvent("PageView", base);
-      break;
-    case "scroll_25":
-      sendGA4Event("scroll_depth", { ...base, percent: 25 });
-      break;
-    case "scroll_50":
-      sendGA4Event("scroll_depth", { ...base, percent: 50 });
-      sendPixelEvent("ViewContent", base);
-      break;
-    case "scroll_75":
-      sendGA4Event("scroll_depth", { ...base, percent: 75 });
-      break;
-    case "mini_submit_success":
-      sendGA4Event("form_submit", { ...base, form_type: "mini" });
-      sendPixelEvent("Lead", { ...base, form_type: "mini" });
-      break;
-    case "full_submit_success":
-      sendGA4Event("form_submit", { ...base, form_type: "full" });
-      sendPixelEvent("Lead", { ...base, form_type: "full" });
-      break;
-    case "viber_click":
-      sendGA4Event("viber_click", base);
-      sendPixelEvent("Contact", base);
-      break;
-    case "cta_sticky_click":
-    case "cta_scroll_click":
-      sendGA4Event("cta_click", base);
-      break;
-    default:
-      sendGA4Event(name, base);
-      break;
+  if (name === "mini_submit_success" || name === "full_submit_success") {
+    sendPixelEvent("Lead", payload);
+  } else if (name === "page_view") {
+    sendPixelEvent("PageView");
+  } else {
+    sendPixelEvent("CustomEvent", {
+      event_name: name,
+      ...(payload ?? {}),
+    });
   }
 }
 

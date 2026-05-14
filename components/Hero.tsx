@@ -11,6 +11,12 @@ export default function Hero() {
   const [errorMessage, setErrorMessage] = useState("");
   const formStartTrackedRef = useRef(false);
 
+  const handleFormFieldFocus = () => {
+    if (formStartTrackedRef.current) return;
+    trackEvent("form_start", { lead_channel: "mini_form" });
+    formStartTrackedRef.current = true;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.phone) return;
@@ -110,11 +116,7 @@ export default function Hero() {
                       disabled={status === "loading"}
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      onFocus={() => {
-                        if (formStartTrackedRef.current) return;
-                        formStartTrackedRef.current = true;
-                        trackEvent("form_start");
-                      }}
+                      onFocus={handleFormFieldFocus}
                       className="w-full bg-black/5 dark:bg-black/50 border border-transparent dark:border-white/5 rounded-xl px-4 py-3 md:py-4 text-black dark:text-white placeholder:text-neutral-gray focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all disabled:opacity-50"
                       aria-label="Όνομα"
                     />
@@ -127,6 +129,7 @@ export default function Hero() {
                       disabled={status === "loading"}
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      onFocus={handleFormFieldFocus}
                       className="w-full bg-black/5 dark:bg-black/50 border border-transparent dark:border-white/5 rounded-xl px-4 py-3 md:py-4 text-black dark:text-white placeholder:text-neutral-gray focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all disabled:opacity-50"
                       aria-label="Τηλέφωνο"
                     />
