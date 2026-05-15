@@ -67,6 +67,8 @@ export async function POST(req: Request) {
     hasContactEmail: !!process.env.CONTACT_EMAIL,
     hasGoogleWebhook: !!process.env.GOOGLE_SHEETS_WEBHOOK,
     hasResendFrom: !!process.env.RESEND_FROM_EMAIL,
+    hasTelegramToken: !!process.env.TELEGRAM_BOT_TOKEN,
+    hasTelegramChatId: !!process.env.TELEGRAM_CHAT_ID,
   });
   try {
     const fromEmail = process.env.RESEND_FROM_EMAIL;
