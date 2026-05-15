@@ -346,12 +346,10 @@ export async function POST(req: Request) {
       }
     })();
 
-    void (async () => {
-      try {
-        const botToken = process.env.TELEGRAM_BOT_TOKEN;
-        const chatId = process.env.TELEGRAM_CHAT_ID;
-        if (!botToken || !chatId) return;
-
+    try {
+      const botToken = process.env.TELEGRAM_BOT_TOKEN;
+      const chatId = process.env.TELEGRAM_CHAT_ID;
+      if (botToken && chatId) {
         const tgType =
           typeof type === "string" && type.trim() !== ""
             ? escapeHtml(type.trim())
@@ -392,19 +390,17 @@ export async function POST(req: Request) {
             }),
           }
         );
-      } catch (err) {
-        console.error("Telegram error:", err);
       }
-    })();
+    } catch (err) {
+      console.error("Telegram error:", err);
+    }
 
-    void (async () => {
-      try {
-        const validatedEmail =
+    try {
+      const validatedEmail =
           typeof email === "string" && email.trim() !== ""
             ? email.trim()
             : "";
-        if (!validatedEmail || !process.env.RESEND_API_KEY) return;
-
+      if (validatedEmail && process.env.RESEND_API_KEY) {
         const followUpHtml = `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px; color: #333333;">
           <h2 style="color: #5727A3; margin-bottom: 20px;">Θυμηθήκαμε εσάς — Θες Λύσεις</h2>
@@ -426,10 +422,10 @@ export async function POST(req: Request) {
           html: followUpHtml,
           scheduledAt: new Date(Date.now() + 60 * 60 * 1000).toISOString(),
         });
-      } catch {
-        /* never block response */
       }
-    })();
+    } catch {
+      /* never block response */
+    }
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {
