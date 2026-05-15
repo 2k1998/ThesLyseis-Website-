@@ -392,8 +392,8 @@ export async function POST(req: Request) {
             }),
           }
         );
-      } catch {
-        /* never block response */
+      } catch (err) {
+        console.error("Telegram error:", err);
       }
     })();
 
