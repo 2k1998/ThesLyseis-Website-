@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import AnalyticsInit from "@/components/AnalyticsInit";
+import CookieBanner from "@/components/CookieBanner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AttributionInitializer from "@/components/growth/AttributionInitializer";
@@ -48,6 +49,7 @@ export default function RootLayout({
         className={`${inter.className} antialiased bg-background text-foreground transition-colors duration-400`}
       >
         <AnalyticsInit />
+        <CookieBanner />
         <AttributionInitializer />
         <ScrollTracker />
         <Navbar />
