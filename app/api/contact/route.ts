@@ -344,6 +344,91 @@ export async function POST(req: Request) {
       }
     })();
 
+    void (async () => {
+      try {
+        const botToken = process.env.TELEGRAM_BOT_TOKEN;
+        const chatId = process.env.TELEGRAM_CHAT_ID;
+        if (!botToken || !chatId) return;
+
+        const tgType =
+          typeof type === "string" && type.trim() !== ""
+            ? escapeHtml(type.trim())
+            : "Μη καθορισμένο";
+        const tgLeadChannel =
+          typeof lead_channel === "string" && lead_channel.trim() !== ""
+            ? escapeHtml(lead_channel.trim())
+            : "Μη καθορισμένο";
+        const tgProvider =
+          typeof provider === "string" && provider.trim() !== ""
+            ? escapeHtml(provider.trim())
+            : "Μη καθορισμένο";
+        const tgMonthlyBill =
+          typeof monthly_bill === "string" && monthly_bill.trim() !== ""
+            ? escapeHtml(monthly_bill.trim())
+            : "Μη καθορισμένο";
+
+        const telegramText = [
+          "🔔 <b>Νέο Lead!</b>",
+          "",
+          `👤 <b>Όνομα:</b> ${safeName}`,
+          `📞 <b>Τηλέφωνο:</b> ${safePhone}`,
+          `⚡ <b>Υπηρεσία:</b> ${tgType}`,
+          `📋 <b>Πηγή:</b> ${tgLeadChannel}`,
+          `🌐 <b>Πάροχος:</b> ${tgProvider}`,
+          `💶 <b>Μηνιαίος λογαριασμός:</b> ${tgMonthlyBill}`,
+        ].join("\n");
+
+        await fetch(
+          `https://api.telegram.org/bot${botToken}/sendMessage`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              chat_id: chatId,
+              parse_mode: "HTML",
+              text: telegramText,
+            }),
+          }
+        );
+      } catch {
+        /* never block response */
+      }
+    })();
+
+    void (async () => {
+      try {
+        const validatedEmail =
+          typeof email === "string" && email.trim() !== ""
+            ? email.trim()
+            : "";
+        if (!validatedEmail || !process.env.RESEND_API_KEY) return;
+
+        const followUpHtml = `
+        <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px; color: #333333;">
+          <h2 style="color: #5727A3; margin-bottom: 20px;">Θυμηθήκαμε εσάς — Θες Λύσεις</h2>
+          <p style="font-size: 16px; line-height: 1.6;">
+            Γεια σας ${safeName},<br/><br/>
+            Θέλαμε να σας ενημερώσουμε ότι ο σύμβουλός μας θα επικοινωνήσει μαζί σας σύντομα στο <strong>${safePhone}</strong>. Αν έχετε οποιαδήποτε ερώτηση στο μεταξύ, είμαστε στη διάθεσή σας.<br/><br/>
+            Υπενθυμίζουμε ότι ο δωρεάν έλεγχος του λογαριασμού σας δεν έχει καμία δέσμευση. Απλώς μας δίνετε τον λογαριασμό σας και εμείς σας λέμε αν μπορείτε να εξοικονομήσετε χρήματα.<br/><br/>
+            Μπορείτε επίσης να επικοινωνήσετε μαζί μας απευθείας στο 2311825327 ή μέσω Viber στο +30 693 264 2952.<br/><br/>
+            Με εκτίμηση,<br/>
+            Η ομάδα του Θες Λύσεις
+          </p>
+        </div>
+      `;
+
+        await resend.emails.send({
+          from: "noreply@theslyseis.gr",
+          to: validatedEmail,
+          subject: "Θυμηθήκαμε εσάς — Θες Λύσεις",
+          html: followUpHtml,
+          scheduledAt: new Date(Date.now() + 60 * 60 * 1000).toISOString(),
+        });
+      } catch {
+        /* never block response */
+      }
+    })();
+
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {
     console.error("Contact API error:", error);
