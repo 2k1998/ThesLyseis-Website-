@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Hero from "@/components/Hero";
 import TrustStrip from "@/components/TrustStrip";
 import PromiseSection from "@/components/PromiseSection";
@@ -5,6 +6,13 @@ import HowItWorks from "@/components/HowItWorks";
 import ServicesGrid from "@/components/ServicesGrid";
 import FAQAccordion from "@/components/FAQAccordion";
 import CTASection from "@/components/CTASection";
+
+export const metadata: Metadata = {
+  title: "Δωρεάν Σύγκριση Ρεύματος, Αερίου & Τηλεπικοινωνιών",
+  description:
+    "Συγκρίνουμε δωρεάν παρόχους ρεύματος, φυσικού αερίου και τηλεπικοινωνιών σε όλη την Ελλάδα. Βρείτε φθηνότερο τιμολόγιο χωρίς κόστος και χωρίς δέσμευση — ο προσωπικός σας σύμβουλος ενέργειας.",
+  alternates: { canonical: "https://www.theslyseis.gr" },
+};
 
 export default function Home() {
   return (

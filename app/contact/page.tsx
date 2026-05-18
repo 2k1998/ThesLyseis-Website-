@@ -3,9 +3,10 @@ import ContactForm from "@/components/ContactForm";
 import Container from "@/components/Container";
 
 export const metadata: Metadata = {
-  title: "Επικοινωνία | Θες Λύσεις",
+  title: "Δωρεάν Έλεγχος Λογαριασμού | Χωρίς Δέσμευση",
   description:
-    "Συμπληρώστε τη φόρμα ή επικοινωνήστε τηλεφωνικά, μέσω Viber ή email. Δωρεάν έλεγχος και προσωπική καθοδήγηση.",
+    "Ζητήστε δωρεάν έλεγχο λογαριασμού ρεύματος, φυσικού αερίου ή τηλεπικοινωνιών. Καλέστε ή συμπληρώστε τη φόρμα — χωρίς κόστος, χωρίς υποχρέωση αλλαγής παρόχου.",
+  alternates: { canonical: "https://www.theslyseis.gr/contact" },
 };
 
 function IconPhone() {

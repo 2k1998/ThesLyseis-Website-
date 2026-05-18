@@ -10,13 +10,60 @@ import ScrollTracker from "@/components/growth/ScrollTracker";
 import StickyCTA from "@/components/StickyCTA";
 import ScrollCTA from "@/components/ScrollCTA";
 import ViberButton from "@/components/ViberButton";
+import StructuredData from "@/components/StructuredData";
 
 const inter = Inter({ subsets: ["latin", "greek"] });
 
 export const metadata: Metadata = {
-  title: "Θες Λύσεις | Προσωπικός Σύμβουλος Ενέργειας",
+  metadataBase: new URL("https://www.theslyseis.gr"),
+  title: {
+    default: "Θες Λύσεις | Σύμβουλος Ενέργειας & Τηλεπικοινωνιών",
+    template: "%s | Θες Λύσεις",
+  },
   description:
-    "Παρακολουθούμε την αγορά για εσάς. Σας ενημερώνουμε μόνο όταν συμφέρει. Χωρίς κόστος.",
+    "Συγκρίνουμε παρόχους ρεύματος, φυσικού αερίου και τηλεπικοινωνιών για ιδιώτες και επιχειρήσεις σε όλη την Ελλάδα. Δωρεάν υπηρεσία, χωρίς δεσμεύσεις.",
+  keywords: [
+    "σύμβουλος ενέργειας",
+    "σύγκριση παρόχων ρεύματος",
+    "φθηνότερο ρεύμα",
+    "αλλαγή παρόχου",
+    "φυσικό αέριο",
+    "τηλεπικοινωνίες",
+  ],
+  authors: [{ name: "Θες Λύσεις" }],
+  creator: "Θες Λύσεις",
+  openGraph: {
+    type: "website",
+    locale: "el_GR",
+    url: "https://www.theslyseis.gr",
+    siteName: "Θες Λύσεις",
+    title: "Θες Λύσεις | Σύμβουλος Ενέργειας & Τηλεπικοινωνιών",
+    description:
+      "Συγκρίνουμε παρόχους ρεύματος, φυσικού αερίου και τηλεπικοινωνιών για ιδιώτες και επιχειρήσεις σε όλη την Ελλάδα. Δωρεάν υπηρεσία, χωρίς δεσμεύσεις.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Θες Λύσεις — Σύμβουλος Ενέργειας & Τηλεπικοινωνιών",
+        type: "image/png",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Θες Λύσεις | Σύμβουλος Ενέργειας & Τηλεπικοινωνιών",
+    description:
+      "Συγκρίνουμε παρόχους ρεύματος, φυσικού αερίου και τηλεπικοινωνιών για ιδιώτες και επιχειρήσεις σε όλη την Ελλάδα. Δωρεάν, χωρίς δεσμεύσεις.",
+    images: ["/og-image.png"],
+  },
+  alternates: {
+    canonical: "https://www.theslyseis.gr",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -27,6 +74,7 @@ export default function RootLayout({
   return (
     <html lang="el" className="dark">
       <head>
+        <StructuredData />
         <script
           dangerouslySetInnerHTML={{
             __html: `
