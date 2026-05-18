@@ -14,7 +14,7 @@ export default function CTASection() {
           </p>
           <button
             type="button"
-            className="bg-primary hover:bg-primary-light text-white font-medium rounded-xl px-10 py-4 text-lg hover:scale-[1.02] transition-all duration-300 shadow-lg shadow-primary/20"
+            className="bg-primary hover:bg-primary-light text-white font-medium rounded-xl px-10 py-4 text-lg hover:scale-[1.02] transition duration-300 shadow-lg shadow-primary/20"
           >
             Ξεκινήστε Δωρεάν Έλεγχο
           </button>

@@ -209,7 +209,7 @@ export default async function ServicesPage() {
                   key={step.number}
                   className="flex flex-1 flex-col items-center text-center"
                 >
-                  <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-full border-4 border-primary bg-background text-xl font-bold text-primary shadow-sm md:h-[5.5rem] md:w-[5.5rem] md:text-2xl">
+                  <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-full border-4 border-primary bg-background text-xl font-bold text-primary shadow-sm md:h-22 md:w-22 md:text-2xl">
                     {step.number}
                   </div>
                   <h3 className="max-w-[220px] text-base font-semibold text-foreground md:text-lg">
@@ -231,7 +231,7 @@ export default async function ServicesPage() {
             </h2>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center rounded-xl bg-primary px-10 py-4 text-lg font-medium text-white shadow-lg shadow-primary/20 transition-all duration-300 hover:scale-[1.02] hover:bg-primary-light"
+              className="inline-flex items-center justify-center rounded-xl bg-primary px-10 py-4 text-lg font-medium text-white shadow-lg shadow-primary/20 transition duration-300 hover:scale-[1.02] hover:bg-primary-light"
             >
               Δωρεάν Έλεγχος
             </Link>

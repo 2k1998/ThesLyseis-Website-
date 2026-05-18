@@ -135,7 +135,7 @@ export default function ContactForm({ embedded = false }: ContactFormProps) {
                       value={formData.name}
                       onChange={handleChange}
                       onFocus={handleFormFieldFocus}
-                      className="w-full bg-card border border-card-border rounded-xl px-4 py-3 text-foreground placeholder:text-foreground-muted focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all disabled:opacity-50"
+                      className="w-full bg-card border border-card-border rounded-xl px-4 py-3 text-foreground placeholder:text-foreground-muted focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors disabled:opacity-50"
                     />
                   </div>
                   <div>
@@ -149,7 +149,7 @@ export default function ContactForm({ embedded = false }: ContactFormProps) {
                       value={formData.phone}
                       onChange={handleChange}
                       onFocus={handleFormFieldFocus}
-                      className="w-full bg-card border border-card-border rounded-xl px-4 py-3 text-foreground placeholder:text-foreground-muted focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all disabled:opacity-50"
+                      className="w-full bg-card border border-card-border rounded-xl px-4 py-3 text-foreground placeholder:text-foreground-muted focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors disabled:opacity-50"
                     />
                   </div>
                 </div>
@@ -166,7 +166,7 @@ export default function ContactForm({ embedded = false }: ContactFormProps) {
                       value={formData.email}
                       onChange={handleChange}
                       onFocus={handleFormFieldFocus}
-                      className="w-full bg-card border border-card-border rounded-xl px-4 py-3 text-foreground placeholder:text-foreground-muted focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all disabled:opacity-50"
+                      className="w-full bg-card border border-card-border rounded-xl px-4 py-3 text-foreground placeholder:text-foreground-muted focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors disabled:opacity-50"
                     />
                   </div>
                   <div>
@@ -179,7 +179,7 @@ export default function ContactForm({ embedded = false }: ContactFormProps) {
                       value={formData.type}
                       onChange={handleChange}
                       onFocus={handleFormFieldFocus}
-                      className="w-full bg-card border border-card-border rounded-xl px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all disabled:opacity-50"
+                      className="w-full bg-card border border-card-border rounded-xl px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors disabled:opacity-50"
                     >
                       <option value="" disabled>Επιλέξτε...</option>
                       <option value="Ιδιώτης">Ιδιώτης</option>
@@ -199,7 +199,7 @@ export default function ContactForm({ embedded = false }: ContactFormProps) {
                       value={formData.provider}
                       onChange={handleChange}
                       onFocus={handleFormFieldFocus}
-                      className="w-full bg-card border border-card-border rounded-xl px-4 py-3 text-foreground placeholder:text-foreground-muted focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all disabled:opacity-50"
+                      className="w-full bg-card border border-card-border rounded-xl px-4 py-3 text-foreground placeholder:text-foreground-muted focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors disabled:opacity-50"
                     />
                   </div>
                   <div>
@@ -212,7 +212,7 @@ export default function ContactForm({ embedded = false }: ContactFormProps) {
                       value={formData.monthly_bill}
                       onChange={handleChange}
                       onFocus={handleFormFieldFocus}
-                      className="w-full bg-card border border-card-border rounded-xl px-4 py-3 text-foreground placeholder:text-foreground-muted focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all disabled:opacity-50"
+                      className="w-full bg-card border border-card-border rounded-xl px-4 py-3 text-foreground placeholder:text-foreground-muted focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors disabled:opacity-50"
                     />
                   </div>
                 </div>
@@ -227,7 +227,7 @@ export default function ContactForm({ embedded = false }: ContactFormProps) {
                     value={formData.message}
                     onChange={handleChange}
                     onFocus={handleFormFieldFocus}
-                    className="w-full bg-card border border-card-border rounded-xl px-4 py-3 text-foreground placeholder:text-foreground-muted focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all disabled:opacity-50 resize-y"
+                    className="w-full bg-card border border-card-border rounded-xl px-4 py-3 text-foreground placeholder:text-foreground-muted focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors disabled:opacity-50 resize-y"
                   ></textarea>
                 </div>
 
@@ -241,7 +241,7 @@ export default function ContactForm({ embedded = false }: ContactFormProps) {
                   <button
                     type="submit"
                     disabled={status === "loading"}
-                    className="bg-primary hover:bg-primary-light text-white font-medium rounded-xl px-10 py-4 text-lg hover:scale-[1.02] transition-all duration-300 w-full md:w-auto shadow-lg shadow-primary/20 disabled:opacity-70 disabled:hover:scale-100 flex items-center justify-center min-w-[200px] mx-auto focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                    className="bg-primary hover:bg-primary-light text-white font-medium rounded-xl px-10 py-4 text-lg hover:scale-[1.02] transition duration-300 w-full md:w-auto shadow-lg shadow-primary/20 disabled:opacity-70 disabled:hover:scale-100 flex items-center justify-center min-w-[200px] mx-auto focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                   >
                     {status === "loading" ? (
                       <svg className="animate-spin h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">

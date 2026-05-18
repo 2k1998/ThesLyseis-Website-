@@ -58,7 +58,7 @@ export default function CookieBanner() {
       role="dialog"
       aria-labelledby="cookie-banner-title"
       aria-live="polite"
-      className={`fixed bottom-28 right-4 z-50 max-w-sm rounded-2xl border border-card-border bg-card p-5 shadow-xl transition-all duration-300 md:bottom-24 ${
+      className={`fixed bottom-28 right-4 z-50 max-w-sm rounded-2xl border border-card-border bg-card p-5 shadow-xl transition duration-300 md:bottom-24 ${
         isVisible
           ? "translate-y-0 opacity-100"
           : "translate-y-4 opacity-0"

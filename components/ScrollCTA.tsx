@@ -62,7 +62,7 @@ export default function ScrollCTA() {
       </p>
       <button
         onClick={handleClick}
-        className="ml-8 shrink-0 bg-background text-[#5727A3] font-semibold text-sm px-6 py-2 rounded-full hover:bg-background-secondary transition-colors duration-200"
+        className="ml-8 shrink-0 bg-background text-primary font-semibold text-sm px-6 py-2 rounded-full hover:bg-background-secondary transition-colors duration-200"
       >
         Δωρεάν Έλεγχος →
       </button>

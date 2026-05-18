@@ -77,7 +77,7 @@ export default function Hero() {
           <div className="mb-10 max-w-2xl space-y-3">
             <p className="text-lg md:text-xl font-bold text-foreground">
               Δεν ήξερες; Δε ρώταγες. Η απάντηση είναι μία:{" "}
-              <span className="font-bold text-[#5727A3]">Θες Λύσεις</span>.
+              <span className="text-primary">Θες Λύσεις</span>.
             </p>
             <p className="text-lg md:text-xl text-foreground-muted">
               Παρακολουθούμε την αγορά για εσάς και σας ενημερώνουμε ποιο πρόγραμμα και ποιος πάροχος συμφέρει με βάση την κατανάλωσή σας. Χωρίς κόστος, χωρίς δεσμεύσεις.
@@ -117,7 +117,7 @@ export default function Hero() {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       onFocus={handleFormFieldFocus}
-                      className="w-full bg-background-secondary border border-card-border rounded-xl px-4 py-3 md:py-4 text-foreground placeholder:text-foreground-muted focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all disabled:opacity-50"
+                      className="w-full bg-background-secondary border border-card-border rounded-xl px-4 py-3 md:py-4 text-foreground placeholder:text-foreground-muted focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors disabled:opacity-50"
                       aria-label="Όνομα"
                     />
                   </div>
@@ -130,14 +130,14 @@ export default function Hero() {
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       onFocus={handleFormFieldFocus}
-                      className="w-full bg-background-secondary border border-card-border rounded-xl px-4 py-3 md:py-4 text-foreground placeholder:text-foreground-muted focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all disabled:opacity-50"
+                      className="w-full bg-background-secondary border border-card-border rounded-xl px-4 py-3 md:py-4 text-foreground placeholder:text-foreground-muted focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors disabled:opacity-50"
                       aria-label="Τηλέφωνο"
                     />
                   </div>
                   <button
                     type="submit"
                     disabled={status === "loading"}
-                    className="bg-primary hover:bg-primary-light text-white font-medium rounded-xl px-8 py-3 md:py-4 hover:scale-[1.02] transition-all duration-300 w-full md:w-auto flex-shrink-0 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:opacity-70 disabled:hover:scale-100 flex items-center justify-center min-w-[180px]"
+                    className="bg-primary hover:bg-primary-light text-white font-medium rounded-xl px-8 py-3 md:py-4 hover:scale-[1.02] transition duration-300 w-full md:w-auto flex-shrink-0 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:opacity-70 disabled:hover:scale-100 flex items-center justify-center min-w-[180px]"
                   >
                     {status === "loading" ? (
                       <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">

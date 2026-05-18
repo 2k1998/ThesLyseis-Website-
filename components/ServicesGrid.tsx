@@ -36,7 +36,7 @@ export default function ServicesGrid() {
           {services.map((service, index) => (
             <div
               key={index}
-              className="bg-card border border-card-border rounded-2xl p-8 hover:shadow-xl dark:hover:shadow-[0_20px_40px_rgba(255,255,255,0.05)] hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group"
+              className="bg-card border border-card-border rounded-2xl p-8 hover:shadow-xl dark:hover:shadow-[0_20px_40px_rgba(255,255,255,0.05)] hover:-translate-y-1 transition duration-300 relative overflow-hidden group"
             >
               {/* Purple top border accent */}
               <div className="absolute top-0 left-0 right-0 h-1 bg-primary/20 group-hover:bg-primary transition-colors duration-300"></div>

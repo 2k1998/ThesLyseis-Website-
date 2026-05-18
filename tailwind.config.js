@@ -2,9 +2,14 @@
 module.exports = {
   darkMode: "class",
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/globals.css",
+    "./app/**/page.tsx",
+    "./app/**/layout.tsx",
+    "./components/**/*.tsx",
+    // Unused duplicates — not imported anywhere; exclude from CSS scan
+    "!./components/growth/StickyCTA.tsx",
+    "!./components/growth/ScrollCTA.tsx",
+    "!./components/growth/ViberButton.tsx",
   ],
   theme: {
     extend: {

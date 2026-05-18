@@ -7,9 +7,20 @@ declare global {
   }
 }
 
+let loadScheduled = false;
+
 function appendToHead(node: Node): void {
   const head = document.head ?? document.documentElement;
   head.appendChild(node);
+}
+
+/** Defer work until the browser is idle, or after 3s at latest. */
+function scheduleAfterInteractive(work: () => void): void {
+  if (typeof window.requestIdleCallback === "function") {
+    window.requestIdleCallback(work, { timeout: 3000 });
+    return;
+  }
+  setTimeout(work, 3000);
 }
 
 function initGA4(measurementId: string): void {
@@ -63,31 +74,45 @@ function initMetaPixel(pixelId: string): void {
 }
 
 /**
- * Loads GA4 (gtag.js) and Meta Pixel on the client when the corresponding
- * `NEXT_PUBLIC_*` env vars are set. Never throws.
+ * Schedules GA4 (gtag.js) and Meta Pixel to load after the page is interactive.
+ * Uses `requestIdleCallback` with a 3s timeout fallback so scripts do not block
+ * initial render on mobile. Requires matching `NEXT_PUBLIC_*` env vars. Never throws.
  */
 export function initAnalytics(): void {
   if (typeof window === "undefined") {
     return;
   }
 
-  const measurementId = process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID?.trim();
-  if (measurementId) {
-    try {
-      initGA4(measurementId);
-    } catch {
-      /* intentionally silent */
-    }
+  if (loadScheduled) {
+    return;
   }
 
+  const measurementId = process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID?.trim();
   const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID?.trim();
-  if (pixelId) {
-    try {
-      initMetaPixel(pixelId);
-    } catch {
-      /* intentionally silent */
-    }
+
+  if (!measurementId && !pixelId) {
+    return;
   }
+
+  loadScheduled = true;
+
+  scheduleAfterInteractive(() => {
+    if (measurementId) {
+      try {
+        initGA4(measurementId);
+      } catch {
+        /* intentionally silent */
+      }
+    }
+
+    if (pixelId) {
+      try {
+        initMetaPixel(pixelId);
+      } catch {
+        /* intentionally silent */
+      }
+    }
+  });
 }
 
 export function sendGA4Event(

@@ -205,7 +205,7 @@ export default async function AboutPage() {
             </h2>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center rounded-xl bg-primary px-10 py-4 text-lg font-medium text-white shadow-lg shadow-primary/20 transition-all duration-300 hover:scale-[1.02] hover:bg-primary-light"
+              className="inline-flex items-center justify-center rounded-xl bg-primary px-10 py-4 text-lg font-medium text-white shadow-lg shadow-primary/20 transition duration-300 hover:scale-[1.02] hover:bg-primary-light"
             >
               Δωρεάν Έλεγχος
             </Link>
