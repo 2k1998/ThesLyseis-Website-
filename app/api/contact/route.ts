@@ -327,7 +327,9 @@ export async function POST(req: Request) {
           time_to_submit_seconds: parsedTimeToSubmit ?? "",
           lead_channel:           sheetLeadChannel,
         }),
-      }).catch(() => {});
+      }).catch((err) => {
+        console.error("Sheets webhook error:", err);
+      });
     }
 
     void (async () => {
