@@ -159,7 +159,7 @@ export default function ContactPage() {
                   </li>
                   <li>
                     <a
-                      href="mailto:info@theslyseis.gr"
+                      href="mailto:theslyseis@gmail.com"
                       className="flex gap-3 text-foreground-muted transition-colors duration-300 hover:text-foreground"
                     >
                       <IconMail />
@@ -168,7 +168,7 @@ export default function ContactPage() {
                           Email
                         </span>
                         <span className="text-base font-semibold text-foreground break-all">
-                          info@theslyseis.gr
+                          theslyseis@gmail.com
                         </span>
                       </span>
                     </a>
