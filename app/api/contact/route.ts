@@ -293,43 +293,49 @@ export async function POST(req: Request) {
       }
     }
 
-    // Webhook Logging (Fire and Forget)
+    // Webhook logging (awaited temporarily for Vercel debugging)
     if (process.env.GOOGLE_SHEETS_WEBHOOK) {
-      // Do not await, do not log exception details
-      fetch(process.env.GOOGLE_SHEETS_WEBHOOK, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          timestamp: new Date().toISOString(),
-          name: safeName,
-          phone: safePhone,
-          email: safeEmail,
-          type: safeType,
-          provider: safeProvider,
-          monthly_bill: safeMonthlyBill,
-          referral: safeReferral,
-          message: safeMessage,
-          source: safeSource,
-          attribution: attribution || null,
-          first_touch_source:   firstTouch.utm_source   || "",
-          first_touch_medium:   firstTouch.utm_medium   || "",
-          first_touch_campaign: firstTouch.utm_campaign || "",
-          first_touch_landing:  firstTouch.landing_page || "",
-          first_touch_ts:       firstTouch.timestamp    || "",
-          last_touch_source:    lastTouch.utm_source    || "",
-          last_touch_medium:    lastTouch.utm_medium    || "",
-          last_touch_campaign:  lastTouch.utm_campaign  || "",
-          last_touch_landing:   lastTouch.landing_page  || "",
-          last_touch_ts:        lastTouch.timestamp     || "",
-          referrer:             firstTouch.referrer      || "",
-          device_type:            sheetDeviceType,
-          scroll_depth_at_submit: parsedScrollDepth ?? "",
-          time_to_submit_seconds: parsedTimeToSubmit ?? "",
-          lead_channel:           sheetLeadChannel,
-        }),
-      }).catch((err) => {
+      try {
+        const sheetsRes = await fetch(process.env.GOOGLE_SHEETS_WEBHOOK, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            timestamp: new Date().toISOString(),
+            name: safeName,
+            phone: safePhone,
+            email: safeEmail,
+            type: safeType,
+            provider: safeProvider,
+            monthly_bill: safeMonthlyBill,
+            referral: safeReferral,
+            message: safeMessage,
+            source: safeSource,
+            attribution: attribution || null,
+            first_touch_source:   firstTouch.utm_source   || "",
+            first_touch_medium:   firstTouch.utm_medium   || "",
+            first_touch_campaign: firstTouch.utm_campaign || "",
+            first_touch_landing:  firstTouch.landing_page || "",
+            first_touch_ts:       firstTouch.timestamp    || "",
+            last_touch_source:    lastTouch.utm_source    || "",
+            last_touch_medium:    lastTouch.utm_medium    || "",
+            last_touch_campaign:  lastTouch.utm_campaign  || "",
+            last_touch_landing:   lastTouch.landing_page  || "",
+            last_touch_ts:        lastTouch.timestamp     || "",
+            referrer:             firstTouch.referrer      || "",
+            device_type:            sheetDeviceType,
+            scroll_depth_at_submit: parsedScrollDepth ?? "",
+            time_to_submit_seconds: parsedTimeToSubmit ?? "",
+            lead_channel:           sheetLeadChannel,
+          }),
+        });
+        console.log(
+          "Sheets response status:",
+          sheetsRes.status,
+          sheetsRes.statusText
+        );
+      } catch (err) {
         console.error("Sheets webhook error:", err);
-      });
+      }
     }
 
     void (async () => {
