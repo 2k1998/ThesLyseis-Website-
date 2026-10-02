@@ -39,6 +39,12 @@ export default function Navbar() {
             Υπηρεσίες
           </Link>
           <Link
+            href="/blog"
+            className="hover:text-primary dark:hover:text-white transition-colors"
+          >
+            Blog
+          </Link>
+          <Link
             href="/contact"
             className="hover:text-primary dark:hover:text-white transition-colors"
           >

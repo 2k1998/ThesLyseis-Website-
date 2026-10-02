@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    scroll-padding-top: 6rem;
+  }
+
   :root {
     --background: 255 255 255;
     --background-secondary: 245 245 247;
@@ -11,6 +15,7 @@
     --card: 255 255 255;
     --card-border: 220 220 220;
     --nav-bg: 255 255 255 / 0.85;
+    --code-bg: 245 245 247;
   }
 
   .dark {
@@ -21,5 +26,154 @@
     --card: 18 18 18;
     --card-border: 38 38 38;
     --nav-bg: 0 0 0 / 0.85;
+    --code-bg: 30 30 34;
+    color-scheme: dark;
+  }
+}
+
+/* Blog article body (rendered markdown). Hand-written; no typography plugin. */
+@layer components {
+  .blog-prose {
+    @apply text-[1.0625rem] leading-[1.8] text-foreground/90 md:text-[1.125rem];
+    overflow-wrap: break-word;
+  }
+
+  .blog-prose > :first-child {
+    @apply mt-0;
+  }
+
+  .blog-prose > :last-child {
+    @apply mb-0;
+  }
+
+  .blog-prose h2 {
+    @apply mb-4 mt-12 text-2xl font-bold leading-tight tracking-tight text-foreground md:text-3xl;
+  }
+
+  .blog-prose h3 {
+    @apply mb-3 mt-9 text-xl font-semibold leading-snug text-foreground md:text-2xl;
+  }
+
+  .blog-prose h4 {
+    @apply mb-2 mt-7 text-lg font-semibold text-foreground;
+  }
+
+  .blog-prose p {
+    @apply my-5;
+  }
+
+  .blog-prose strong {
+    @apply font-semibold text-foreground;
+  }
+
+  .blog-prose a {
+    @apply rounded-sm font-medium text-primary underline decoration-primary/60 underline-offset-4 transition-colors duration-300 hover:decoration-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-light dark:text-primary-soft dark:decoration-primary-soft/70 dark:hover:decoration-primary-soft;
+  }
+
+  .blog-prose ul,
+  .blog-prose ol {
+    @apply my-6 space-y-2 pl-6;
+  }
+
+  .blog-prose ul {
+    @apply list-disc marker:text-primary-light;
+  }
+
+  .blog-prose ol {
+    @apply list-decimal marker:font-semibold marker:text-primary dark:marker:text-primary-light;
+  }
+
+  .blog-prose li > ul,
+  .blog-prose li > ol {
+    @apply my-2;
+  }
+
+  .blog-prose li > p {
+    @apply my-2;
+  }
+
+  .blog-prose blockquote {
+    @apply my-8 rounded-r-xl border-l-4 border-primary-light bg-primary/5 px-5 py-4 text-foreground dark:bg-primary/10;
+  }
+
+  .blog-prose blockquote > :first-child {
+    @apply mt-0;
+  }
+
+  .blog-prose blockquote > :last-child {
+    @apply mb-0;
+  }
+
+  .blog-prose hr {
+    @apply my-12 border-0 border-t border-card-border;
+  }
+
+  .blog-prose img {
+    @apply my-8 h-auto max-w-full rounded-2xl border border-card-border;
+  }
+
+  .blog-prose figure {
+    @apply my-8;
+  }
+
+  .blog-prose figure img {
+    @apply my-0;
+  }
+
+  .blog-prose figcaption {
+    @apply mt-3 text-center text-sm text-foreground-muted;
+  }
+
+  /* Scroll container emitted around tables by the markdown sanitiser. */
+  .blog-table-wrap {
+    @apply my-8 overflow-x-auto rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+
+  /* Touch scroll cue: edge shadows appear only on the side that has more content. */
+  .blog-table-wrap,
+  .blog-prose pre {
+    --scroll-cover: var(--scroll-cover-bg, var(--background));
+    background-image:
+      linear-gradient(to right, rgb(var(--scroll-cover)) 30%, rgb(var(--scroll-cover) / 0)),
+      linear-gradient(to left, rgb(var(--scroll-cover)) 30%, rgb(var(--scroll-cover) / 0)),
+      radial-gradient(farthest-side at 0 50%, rgb(var(--foreground) / 0.2), rgb(var(--foreground) / 0)),
+      radial-gradient(farthest-side at 100% 50%, rgb(var(--foreground) / 0.2), rgb(var(--foreground) / 0));
+    background-position: left center, right center, left center, right center;
+    background-repeat: no-repeat;
+    background-size: 2.5rem 100%, 2.5rem 100%, 0.875rem 100%, 0.875rem 100%;
+    background-attachment: local, local, scroll, scroll;
+  }
+
+  .blog-prose pre {
+    --scroll-cover-bg: var(--code-bg);
+  }
+
+  .blog-prose table {
+    @apply my-0 w-full table-auto border-collapse text-[0.95rem] leading-normal;
+  }
+
+  .blog-prose th {
+    @apply whitespace-nowrap border-b-2 border-card-border bg-foreground/[0.06] px-4 py-3 text-left font-semibold text-foreground dark:bg-foreground/[0.10];
+  }
+
+  .blog-prose th:first-child,
+  .blog-prose td:first-child {
+    @apply whitespace-nowrap;
+  }
+
+  .blog-prose td {
+    @apply border-b border-card-border px-4 py-3 align-top;
+  }
+
+  .blog-prose code {
+    @apply rounded-md border border-card-border bg-[rgb(var(--code-bg))] px-1.5 py-0.5 font-mono text-[0.9em] text-foreground;
+  }
+
+  .blog-prose pre {
+    @apply my-6 overflow-x-auto rounded-xl border border-card-border bg-[rgb(var(--code-bg))] p-4 dark:border-foreground/20 text-sm leading-relaxed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+
+  .blog-prose pre code {
+    @apply border-0 bg-transparent p-0 text-[inherit];
   }
 }
