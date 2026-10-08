@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-labelledby="t d" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif">
+<title id="t">Φυσικό αέριο: +150% από πέρσι, στα 80 ευρώ ανά MWh</title>
+<desc id="d">Η τιμή του φυσικού αερίου έφτασε τα 80 ευρώ ανά μεγαβατώρα, περίπου 150% πάνω από πέρσι τέτοια εποχή.</desc>
+<rect width="1280" height="720" fill="#F4EEFC"/>
+<circle cx="1180" cy="90" r="270" fill="#D6C5F0" opacity="0.55"/>
+<circle cx="80" cy="690" r="210" fill="#D6C5F0" opacity="0.45"/>
+<rect x="517" y="60" width="246" height="50" rx="25" fill="#5727A3"/><text x="545" y="94" font-size="24" font-weight="700" fill="#FFFFFF" textLength="190" lengthAdjust="spacingAndGlyphs">ΦΥΣΙΚΟ ΑΕΡΙΟ</text><text x="376" y="270" font-size="170" font-weight="700" fill="#5727A3" textLength="527" lengthAdjust="spacingAndGlyphs">+150%</text><text x="392" y="335" font-size="34" font-weight="400" fill="#4A4A46" textLength="496" lengthAdjust="spacingAndGlyphs">πάνω από πέρσι τέτοια εποχή</text><path d="M640 400 C 600 450 590 500 610 540 C 622 565 650 575 672 560 C 700 540 700 500 680 470 C 676 490 664 498 656 494 C 664 470 660 430 640 400 Z" fill="#9153F4"/><path d="M640 470 C 626 495 624 520 640 538 C 658 528 662 500 640 470 Z" fill="#D6C5F0"/><text x="404" y="620" font-size="40" font-weight="700" fill="#111111" textLength="471" lengthAdjust="spacingAndGlyphs">80 € ανά μεγαβατώρα</text>
+</svg>
