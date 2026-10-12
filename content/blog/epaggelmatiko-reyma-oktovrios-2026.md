@@ -3,6 +3,7 @@ title: "Επαγγελματικό ρεύμα τον Οκτώβριο: τι άλ
 date: 2026-10-05
 category: electricity
 excerpt: "Τα επαγγελματικά τιμολόγια ανεβαίνουν και τον Οκτώβριο. Δες τι ισχύει σε πράσινα και μπλε προγράμματα, πόσο διαφέρουν οι τιμές και τι να προσέξεις πριν επιλέξεις."
+cover: /blog/epaggelmatiko-reyma-oktovrios-cover-2026.svg
 sourceName: "NewsIT"
 sourceUrl: "https://www.newsit.gr/oikonomia/xristika/ti-deixnei-i-aktinografia-sta-epaggelmatika-timologia-reymatos-gia-ton-oktovrio/4790024/"
 ---
